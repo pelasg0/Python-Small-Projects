@@ -12,7 +12,8 @@
     - Linear Search
         - From 1 - end number
         - Implemented in real life 
-    - Binary Search 
+    - Binary Search     
+        - Take the half of all the elements and start comparing to the target
     - Correctness 
         - Input - <mark>Problem</mark> - Output
         - For any possible input the algorithm should always terminate or end
@@ -21,3 +22,7 @@
             - the less time you need the more efficient you are 
             - shouldn't consume too much space 
             - analysing the worst case scenario is useful
+    - Big O 
+        - Theoretiral definition of the complexity of an algorith as a function
+        - O (n) - measures how the algorithm performs in the worse case scenario 
+        44m 
