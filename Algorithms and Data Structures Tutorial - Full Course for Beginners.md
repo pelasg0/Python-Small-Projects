@@ -14,6 +14,7 @@
         - Implemented in real life 
     - Binary Search     
         - Take the half of all the elements and start comparing to the target
+        - log of n + 1 
     - Correctness 
         - Input - <mark>Problem</mark> - Output
         - For any possible input the algorithm should always terminate or end
@@ -25,4 +26,10 @@
     - Big O 
         - Theoretiral definition of the complexity of an algorith as a function
         - O (n) - measures how the algorithm performs in the worse case scenario 
-        44m 
+    - <mark> Logarithmic Runtime </mark>
+    - <mark> Polynomial Runtimes </mark>
+        - efficient 
+    - <mark> exponential runtimes </mark>
+        - n increases slightly and the number of operations raises fast
+        - brute forcing
+        - traveling salesman 
