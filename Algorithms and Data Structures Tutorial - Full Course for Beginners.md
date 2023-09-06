@@ -33,3 +33,5 @@
         - n increases slightly and the number of operations raises fast
         - brute forcing
         - traveling salesman 
+
+    1:14:07
