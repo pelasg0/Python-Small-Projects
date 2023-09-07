@@ -18,16 +18,16 @@ class Applicant:
     ---
     '''
 
-    __name = None
-    __age = None
-    __address = None
-    __certificate = None
+    _name = None
+    _age = None
+    _address = None
+    _certificate = None
 
     def __init__(self, name: str, age: int, address: str, certificate: bool):
-        self.__name = name
-        self.__age = age
-        self.__address = address
-        self.__certificate = certificate
+        self._name = name
+        self._age = age
+        self._address = address
+        self._certificate = certificate
     
     """
     ---
@@ -36,28 +36,28 @@ class Applicant:
     """
 
     def getName(self):
-        return self.__name
+        return self._name
     
     def getAge(self):
-        return self.__age
+        return self._age
     
     def getAddress(self):
-        return self.__address
+        return self._address
     
     def getCertificate(self):
-        return self.__certificate
+        return self._certificate
     
     def setName(self, name: str):
-        self.__name = name
+        self._name = name
         
     def setAge(self, age: int):
-        self.__age = age
+        self._age = age
     
     def setAddress(self, address: str):
-        self.__address = address
+        self._address = address
     
     def setCertificate(self, certificate: bool):
-        self.__certificate = certificate
+        self._certificate = certificate
 
 
 class Database:
@@ -68,14 +68,13 @@ class Database:
     ---
     '''
 
-    __applicantList: List[Applicant] = None
+    _applicantList: List[Applicant] = None
 
     def __init__(self, applicantList: List[Applicant] = None):
         if applicantList is None:
             applicantList = []
 
-        self.__applicantList = applicantList
-
+        self._applicantList = applicantList
      
     """
     ---
@@ -84,18 +83,26 @@ class Database:
     """
 
     def getApplicantList(self):
-        return self.__applicantList
+        return self._applicantList
     
-    def insertApplicant(self, applicantList: List[Applicant] = None):
-        self.__applicantList = applicantList
+    def insertApplicant(self, applicant: Applicant):
+        self._applicantList.append(applicant)
         
 
 
 database = Database()
 
 applicantFirst = Applicant("Simeon", 22, "Musterstr.", True)
+applicantSecond = Applicant("Smonka", 23, "Musterstr.", False)
 
-database.insertApplicant([applicantFirst])
+database.insertApplicant(applicantFirst)
+database.insertApplicant(applicantSecond)
+
+applicantList = database._applicantList
+
+
+for applicant in applicantList:
+    print(applicant.getName())
 
 
 
