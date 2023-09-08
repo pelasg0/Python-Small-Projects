@@ -82,18 +82,22 @@ class Database:
     ---
     """
 
-    def getApplicantList(self):
-        return self._applicantList
-    
     def insertApplicant(self, applicant: Applicant):
         self._applicantList.append(applicant)
+    
+    def findApplicant(self, name: str):
+        for applicant in self._applicantList:
+             if applicant.getName() == name:
+                 return applicant
+        return None
+        
         
 
 
 database = Database()
 
 applicantFirst = Applicant("Simeon", 22, "Musterstr.", True)
-applicantSecond = Applicant("Smonka", 23, "Musterstr.", False)
+applicantSecond = Applicant("Maria", 23, "Musterstr.", False)
 
 database.insertApplicant(applicantFirst)
 database.insertApplicant(applicantSecond)
@@ -101,8 +105,11 @@ database.insertApplicant(applicantSecond)
 applicantList = database._applicantList
 
 
-for applicant in applicantList:
-    print(applicant.getName())
+foundApplicant = database.findApplicant(input())
+print("That's applicant {} and he is {} years old.".format(foundApplicant.getName(), foundApplicant.getAge()))
+
+
+
 
 
 
