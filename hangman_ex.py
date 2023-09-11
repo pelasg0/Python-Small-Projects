@@ -5,23 +5,36 @@
 # bonus make the program take the input from the user and make it lowercase 
 # check if the letter is in the word 
 
-
+'''
+some imports
+'''
 import random
+from typing import List
 
-
+'''
+a class where I write all the function and logic for the "hangman" game
+'''
 class main:
 
-
+    '''
+    _greeting - a message presented at the beginning
+    _wordList - the words that are going to be saved
+    _randWord - the random word thats going to be taken from the wordlist
+    _charList - the letters of the word are going to be splitted into single array keys
+    '''
     _greeting: str
-    _wordlist: []
+    _wordlist: List[str] = []
     _randWord: str
-    _charList: []
+    _charList: List[str] = []
     
 
+    '''
+    generating the wordlist with input
+    '''
     def generateWordList(self):
 
         i: int
-        wordListInput: []
+        wordListInput: List[str] = []
         
         i = 3 
 
@@ -38,7 +51,7 @@ class main:
                 print(word)
 
         return self._wordlist
-
+    
     def generateACharList(self):
         self._charList = list(self._randWord)
 
@@ -53,11 +66,15 @@ class main:
         randNumber = random.randint(0, len(self._wordlist) - 1)
         self._randWord = self._wordlist[randNumber]
         return self._randWord 
-    
+    '''
+    here are going to be saved the getter and setter functions 
+    '''
     def getAWord(self):
         print(self._randWord)
 
-
+'''
+here the class is going to be instantiated and calling the functions
+'''
 main = main()
 main.generateWordList()
 main.selectAWord()
