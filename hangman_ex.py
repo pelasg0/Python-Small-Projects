@@ -26,6 +26,7 @@ class main:
     _wordlist: List[str] = []
     _randWord: str
     _charList: List[str] = []
+    _encryptedList: List[str] = []
     
 
     '''
@@ -54,23 +55,37 @@ class main:
     
     def generateACharList(self):
         self._charList = list(self._randWord)
+        self._encryptedList = list(self._randWord)
 
-        for char in self._charList:
-            print(char)
-
+        return self._charList, self._encryptedList
+    
+    def encryptACharList(self):
+        for encryptedChar in self._encryptedList:
+            encryptedChar = '_'
+            return encryptedChar
+        return self._encryptedList
+        
     def checkAChar(self):
         for char in self._charList:
-            pass
+            pass 
     
     def selectAWord(self):
         randNumber = random.randint(0, len(self._wordlist) - 1)
         self._randWord = self._wordlist[randNumber]
         return self._randWord 
+    
     '''
     here are going to be saved the getter and setter functions 
     '''
     def getAWord(self):
         print(self._randWord)
+
+    def getCharList(self):
+        print(self._charList)
+
+    def getEncryptedList(self):
+        print(self._encryptedList)
+
 
 '''
 here the class is going to be instantiated and calling the functions
@@ -80,3 +95,5 @@ main.generateWordList()
 main.selectAWord()
 main.getAWord()
 main.generateACharList()
+main.encryptACharList()
+main.getEncryptedList()
