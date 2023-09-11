@@ -28,7 +28,6 @@ class main:
     _charList: List[str] = []
     _encryptedList: List[str] = []
     
-
     '''
     generating the wordlist with input
     '''
