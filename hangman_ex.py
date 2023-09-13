@@ -59,9 +59,8 @@ class main:
         return self._charList, self._encryptedList
     
     def encryptACharList(self):
-        for encryptedChar in self._encryptedList:
-            encryptedChar = '_'
-            return encryptedChar
+        for encryptedChar in range(len(self._encryptedList)):
+            self._encryptedList[encryptedChar] = '_'
         return self._encryptedList
         
     def checkAChar(self):
