@@ -32,7 +32,6 @@ class main:
     generating the wordlist with input
     '''
     def generateWordList(self):
-
         i: int
         wordListInput: List[str] = []
         
@@ -46,13 +45,11 @@ class main:
             self._wordlist = wordListInput.split()
         '''
         <<OUTPUT>> 
-
         if len(self._wordlist) == i:
             print(f"<<Success>>")
             for word in self._wordlist:
                 print(word)
         '''
-
         return self._wordlist
     
     def generateACharList(self):
@@ -67,10 +64,26 @@ class main:
         return self._encryptedList
         
     def checkAChar(self):
-        for char in self._charList:
-            pass
-         
-    
+        guess:str 
+        index:int
+        gameWon:bool = False
+        i:int = 0
+        while gameWon == False:
+            guess = input("Which letter?")
+            if guess in self._charList:
+                index = self._charList.index(guess)
+                self._encryptedList[index] = guess
+                print(self._encryptedList)      
+                i += 1
+                if guess in self._encryptedList:
+                    index = self._charList.index(guess)
+                    self._charList[index] = " "
+                if i == len(self._encryptedList):
+                    gameWon = True
+                    ("Nice Game :)")
+            else:
+                print("Try one more time ;)")
+                
     def selectAWord(self):
         randNumber = random.randint(0, len(self._wordlist) - 1)
         self._randWord = self._wordlist[randNumber]
@@ -99,3 +112,4 @@ main.getAWord()
 main.generateACharList()
 main.encryptACharList()
 main.getEncryptedList()
+main.checkAChar()
