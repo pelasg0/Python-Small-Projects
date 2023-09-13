@@ -44,11 +44,14 @@ class main:
         while len(self._wordlist) < i or len(self._wordlist) > i:
             wordListInput = input(f"You didn't give me {i} words: ")
             self._wordlist = wordListInput.split()
+        '''
+        <<OUTPUT>> 
 
         if len(self._wordlist) == i:
-            print("good")
+            print(f"<<Success>>")
             for word in self._wordlist:
                 print(word)
+        '''
 
         return self._wordlist
     
@@ -70,7 +73,7 @@ class main:
     def selectAWord(self):
         randNumber = random.randint(0, len(self._wordlist) - 1)
         self._randWord = self._wordlist[randNumber]
-        return self._randWord 
+        return self._randWord
     
     '''
     here are going to be saved the getter and setter functions 

@@ -11,13 +11,11 @@ from typing import TypeAlias
 
 
 class Applicant:
-
     '''
     ---
     A class used to represent the Applicants 
     ---
     '''
-
     _name = None
     _age = None
     _address = None
@@ -97,7 +95,7 @@ class Database:
 database = Database()
 
 applicantFirst = Applicant("Simeon", 22, "Musterstr.", True)
-applicantSecond = Applicant("Maria", 23, "Musterstr.", False)
+applicantSecond = Applicant("Kek", 23, "Musterstr.", False)
 
 database.insertApplicant(applicantFirst)
 database.insertApplicant(applicantSecond)
