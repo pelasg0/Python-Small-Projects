@@ -68,7 +68,8 @@ class main:
         
     def checkAChar(self):
         for char in self._charList:
-            pass 
+            pass
+         
     
     def selectAWord(self):
         randNumber = random.randint(0, len(self._wordlist) - 1)
