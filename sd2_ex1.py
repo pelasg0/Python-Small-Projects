@@ -32,7 +32,7 @@ class Applicant:
         self._secondName = input("Second Name:")
         self._gender = input("Gender:")
         self._city = input("City:")
-        self._age = int(input("Age:"))
+        self._age = int(input("Age:")) 
         self._address = input("Address:")
         self._birthday = [int(input("Day")), int(input("Month")), int(input("Year"))]
         self._certificate = bool(input("Certificate:"))
@@ -40,7 +40,6 @@ class Applicant:
     """
     Getter and setter methods section
     """
-
     def getName(self):
         return self._name
     
@@ -65,7 +64,6 @@ class Applicant:
     def setCertificate(self, certificate: bool):
         self._certificate = certificate
 
-
 class Database:
     '''
     A class used to represent the Database the Applicants will be saved in 
@@ -87,13 +85,27 @@ class Database:
              if applicant.getName() == name:
                  return applicant
         return None
-    
-database = Database()
 
-opt = int(input("What do you want: 1. Create Applicant"))
+database = Database()
+prefix = "created_"
+suffix = "_applicant"
+var_num = 0
+
+def mainMenu():
+    opt = int(input("What do you want: 1. Create Applicant"))
+    return opt
+
+opt = mainMenu()
 
 if opt == 1:
-    firstApplicant = Applicant()
+    var_num += 1
+    globals()[prefix + str(var_num) + suffix] = Applicant()
+    print(globals()[prefix + str(var_num) + suffix].getName())
+    mainMenu()
+
+    
+
+
     
 
 
