@@ -8,29 +8,37 @@ Imports
 """
 from typing import List
 from typing import TypeAlias
+import random
 
 
 class Applicant:
     '''
-    ---
     A class used to represent the Applicants 
-    ---
     '''
-    _name = None
-    _age = None
-    _address = None
-    _certificate = None
+    _id:int = None
+    _firstName:str = None
+    _secondName:str = None
+    _gender:str = None
+    _city:str = None
+    _age:int = None
+    _address:str = None
+    _birthday:List[int]
+    _certificate:bool = None
+    _expectedSalary:float = None
 
-    def __init__(self, name: str, age: int, address: str, certificate: bool):
-        self._name = name
-        self._age = age
-        self._address = address
-        self._certificate = certificate
+    def __init__(self):
+        self._id = random.randint(0, 10000)
+        self._firstName = input("First Name:")
+        self._secondName = input("Second Name:")
+        self._gender = input("Gender:")
+        self._city = input("City:")
+        self._age = int(input("Age:"))
+        self._address = input("Address:")
+        self._birthday = [int(input("Day")), int(input("Month")), int(input("Year"))]
+        self._certificate = bool(input("Certificate:"))
     
     """
-    ---
     Getter and setter methods section
-    ---
     """
 
     def getName(self):
@@ -59,13 +67,9 @@ class Applicant:
 
 
 class Database:
-
     '''
-    ---
     A class used to represent the Database the Applicants will be saved in 
-    ---
     '''
-
     _applicantList: List[Applicant] = None
 
     def __init__(self, applicantList: List[Applicant] = None):
@@ -73,38 +77,28 @@ class Database:
             applicantList = []
 
         self._applicantList = applicantList
-     
     """
-    ---
     Getter and setter methods section
-    ---
     """
-
     def insertApplicant(self, applicant: Applicant):
         self._applicantList.append(applicant)
-    
     def findApplicant(self, name: str):
         for applicant in self._applicantList:
              if applicant.getName() == name:
                  return applicant
         return None
-        
-        
-
-
+    
 database = Database()
 
-applicantFirst = Applicant("Simeon", 22, "Musterstr.", True)
-applicantSecond = Applicant("Kek", 23, "Musterstr.", False)
+opt = int(input("What do you want: 1. Create Applicant"))
 
-database.insertApplicant(applicantFirst)
-database.insertApplicant(applicantSecond)
-
-applicantList = database._applicantList
+if opt == 1:
+    firstApplicant = Applicant()
+    
 
 
-foundApplicant = database.findApplicant(input())
-print("That's applicant {} and he is {} years old.".format(foundApplicant.getName(), foundApplicant.getAge()))
+
+#print(f"That's applicant {foundApplicant.getName()} on {foundApplicant.getAddress()} and he is {foundApplicant.getAge()}")
 
 
 
