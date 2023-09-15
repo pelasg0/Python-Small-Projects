@@ -25,6 +25,7 @@ class Applicant:
     _birthday:List[int]
     _certificate:bool = None
     _expectedSalary:float = None
+    _applicantEntityList:List = None
 
     def __init__(self):
         self._id = random.randint(0, 10000)
@@ -40,27 +41,29 @@ class Applicant:
     """
     Getter and setter methods section
     """
-    def getName(self):
-        return self._name
-    
+    def getFirstName(self):
+        return self._firstName
+    def getSecondName(self):
+        return self._secondName
+    def getGender(self):
+        return self._gender
+    def getCity(self):
+        return self._city
     def getAge(self):
         return self._age
-    
     def getAddress(self):
         return self._address
-    
+    def getBirthday(self):
+        return self._birthday
     def getCertificate(self):
         return self._certificate
     
-    def setName(self, name: str):
-        self._name = name
-        
+    
+    # only the set methods i need because too lazy to write all of them :X
     def setAge(self, age: int):
         self._age = age
-    
     def setAddress(self, address: str):
         self._address = address
-    
     def setCertificate(self, certificate: bool):
         self._certificate = certificate
 
@@ -73,26 +76,28 @@ class Database:
     def __init__(self, applicantList: List[Applicant] = None):
         if applicantList is None:
             applicantList = []
-
         self._applicantList = applicantList
-    """
+
+    '''
     Getter and setter methods section
-    """
+    '''
     def insertApplicant(self, applicant: Applicant):
         self._applicantList.append(applicant)
+
     def findApplicant(self, name: str):
         for applicant in self._applicantList:
-             if applicant.getName() == name:
+             if applicant.getFirstName() == name:
                  return applicant
         return None
 
 database = Database()
+applicantEntityList = Applicant._applicantEntityList
 prefix = "created_"
 suffix = "_applicant"
 var_num = 0
 
 def mainMenu():
-    opt = int(input("What do you want: 1. Create Applicant"))
+    opt = int(input("What do you want: 1. Create Applicant 2. Print all Applicants"))
     return opt
 
 opt = mainMenu()
@@ -100,9 +105,19 @@ opt = mainMenu()
 if opt == 1:
     var_num += 1
     globals()[prefix + str(var_num) + suffix] = Applicant()
-    print(globals()[prefix + str(var_num) + suffix].getName())
+    applicantEntityList.append(applicantEntityList)#need a getter for the list <<undone>>
+    print(globals()[prefix + str(var_num) + suffix].getFirstName())
     mainMenu()
 
+#add applicant in database
+if opt == 2:
+    pass
+
+#print all applicants option
+if opt == 3:
+    mainMenu()
+    pass
+
     
 
 
@@ -110,7 +125,7 @@ if opt == 1:
 
 
 
-#print(f"That's applicant {foundApplicant.getName()} on {foundApplicant.getAddress()} and he is {foundApplicant.getAge()}")
+#print(f"That's applicant {foundApplicant.getFirstName()} on {foundApplicant.getAddress()} and he is {foundApplicant.getAge()}")
 
 
 
