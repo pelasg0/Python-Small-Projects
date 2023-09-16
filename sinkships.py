@@ -14,8 +14,8 @@ class Main:
         while len(self._generatedField) < sideA:
             self._generatedField.append(globals()["list_" + str(self.listIndex) + "_"])
             self.listIndex += 1 
-            while len(globals()["list_" + str(self.listIndex) + "_"]) < sideB:
-                globals()["list_" + str(self.listIndex) + "_"].append("x")
+        while len(globals()["list_" + str(self.listIndex) + "_"]) < sideB:
+            globals()["list_" + str(self.listIndex) + "_"].append("x")
     
     
     def getField(self):
@@ -26,4 +26,6 @@ class Main:
     '''
 
 main = Main()
+main.generateField()
+print(main.getField())
 
