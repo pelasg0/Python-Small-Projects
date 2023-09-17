@@ -43,12 +43,19 @@ class Applicant:
     """
     def getFirstName(self):
         return self._firstName
+<<<<<<< Updated upstream
     def getSecondName(self):
         return self._secondName
     def getGender(self):
         return self._gender
     def getCity(self):
         return self._city
+=======
+    
+    def getSecondName(self):
+        return self._secondName
+    
+>>>>>>> Stashed changes
     def getAge(self):
         return self._age
     def getAddress(self):
@@ -58,8 +65,14 @@ class Applicant:
     def getCertificate(self):
         return self._certificate
     
+<<<<<<< Updated upstream
     
     # only the set methods i need because too lazy to write all of them :X
+=======
+    def setFirstName(self, name: str):
+        self._name = name
+        
+>>>>>>> Stashed changes
     def setAge(self, age: int):
         self._age = age
     def setAddress(self, address: str):
