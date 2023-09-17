@@ -11,9 +11,12 @@ class Main:
         sideA:int = int(input("How many rows?"))
         sideB:int = int(input("How many columns?"))
 
+        #do not use dyynamic vars
+        
         while len(self._generatedField) < sideA:
             self._generatedField.append(globals()["list_" + str(self.listIndex) + "_"])
             self.listIndex += 1 
+
         while len(globals()["list_" + str(self.listIndex) + "_"]) < sideB:
             globals()["list_" + str(self.listIndex) + "_"].append("x")
     
