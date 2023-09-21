@@ -14,7 +14,7 @@ class Main:
         #do not use dyynamic vars
         
         while len(self._generatedField) < sideA:
-            self._generatedField.append(globals()["list_" + str(self.listIndex) + "_"])
+            self._generatedField.append(_generatedField[listIndex])
             self.listIndex += 1 
 
         while len(globals()["list_" + str(self.listIndex) + "_"]) < sideB:
@@ -31,4 +31,3 @@ class Main:
 main = Main()
 main.generateField()
 print(main.getField())
-
