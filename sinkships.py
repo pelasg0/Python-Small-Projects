@@ -8,15 +8,15 @@ class Main:
         pass
 
     def generateField(self, _generatedField):
-        self.columnAmount = int(input("Enter Amount of Items on a Row: "))
         self.rowAmount = int(input("Enter Amount of Rows: "))
+        self.columnAmount = int(input("Enter Amount of Items on a Row: "))
         
-        
-        if(self.columnAmount): 
-            self._generatedField = ["x"] * self.columnAmount
-            print(self._generatedField)
         if(self.rowAmount):
-            pass
+            self._generatedField = [[None]] * self.rowAmount 
+        if(self.columnAmount): 
+                for i in range(0, self.rowAmount):  
+                    self._generatedField[i] = "x" * self.columnAmount
+        print(*self._generatedField, sep = "\n")
         #return print(f"We have {str(self.columnAmount)} and {str(self.rowAmount)}")
         
     def getField(self):
