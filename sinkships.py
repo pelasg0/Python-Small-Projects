@@ -8,15 +8,11 @@ class Main:
         pass
 
     def generateField(self):
-        sideA:int = int(input("How many rows?"))
-        sideB:int = int(input("How many columns?")
-        
-    
+        pass
     
     def getField(self):
         return self._generatedField
 
 
 main = Main()
-main.generateField()
 print(main.getField())
