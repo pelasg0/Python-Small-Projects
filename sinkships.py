@@ -13,18 +13,11 @@ class Main:
         
         
         if(self.columnAmount): 
-            self._generatedField = [None] * self.columnAmount
-            for i in self._generatedField:
-                i = "x"
-                print(self._generatedField)
-        '''
-        while self.columnAmount > len(self._generatedField):
-            self._generatedField = [None] * self.columnAmount
-            self._generatedField[self.listIndex] = "x"
-            self.listIndex += 1
-            print("yes")
-        '''
-        return print(f"We have {str(self.columnAmount)} and {str(self.rowAmount)}")
+            self._generatedField = ["x"] * self.columnAmount
+            print(self._generatedField)
+        if(self.rowAmount):
+            pass
+        #return print(f"We have {str(self.columnAmount)} and {str(self.rowAmount)}")
         
     def getField(self):
         return self._generatedField
