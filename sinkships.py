@@ -11,12 +11,19 @@ class Main:
         self.columnAmount = int(input("Enter Amount of Items on a Row: "))
         self.rowAmount = int(input("Enter Amount of Rows: "))
         
+        
+        if(self.columnAmount): 
+            self._generatedField = [None] * self.columnAmount
+            for i in self._generatedField:
+                i = "x"
+                print(self._generatedField)
+        '''
         while self.columnAmount > len(self._generatedField):
             self._generatedField = [None] * self.columnAmount
             self._generatedField[self.listIndex] = "x"
             self.listIndex += 1
             print("yes")
-        
+        '''
         return print(f"We have {str(self.columnAmount)} and {str(self.rowAmount)}")
         
     def getField(self):
