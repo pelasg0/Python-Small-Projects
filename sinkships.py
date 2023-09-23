@@ -15,15 +15,15 @@ class Main:
             self._generatedField = [[None]] * self.rowAmount 
         if(self.columnAmount): 
                 for i in range(0, self.rowAmount):  
-                    self._generatedField[i] = "x" * self.columnAmount
+                    self._generatedField[i] = ['x'] * self.columnAmount
         print(*self._generatedField, sep = "\n")
         return self._generatedField
         #return print(f"We have {str(self.columnAmount)} and {str(self.rowAmount)}")
     def generateShip(self):
         #self.shipAmount: int = int(input("Enter Amount of Ships: "))
 
-         self._generatedField[0] = "asd"
-         print(self._generatedField)
+         self._generatedField[0][0] = "i"
+         print(*self._generatedField, sep = "\n")
         
     def getField(self):
         return self._generatedField
