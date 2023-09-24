@@ -27,7 +27,7 @@ class Main:
         index: int = 0 #index for the loop so it counts the iterations
         generatedRow: int
         generatedColumn: int 
-        generatedPlaces: int
+        generatedPlaces: int = self.rowAmount * self.columnAmount
 
         self.shipAmount: int = int(input("Enter Amount of Ships: "))
 
