@@ -4,6 +4,7 @@ import random
 
 class Main: 
     _generatedField: list = []
+    _generatedFieldCopy: list = []
     #listIndex:int = 0
     
     def __init__(self):
@@ -19,6 +20,7 @@ class Main:
                 for i in range(0, self.rowAmount):  
                     self._generatedField[i] = ['x'] * self.columnAmount
         print(*self._generatedField, sep = "\n")
+        self._generatedFieldCopy = self._generatedField
         return self._generatedField
     
         #return print(f"We have {str(self.columnAmount)} and {str(self.rowAmount)}")
@@ -42,9 +44,12 @@ class Main:
             print("There are not enough places for the ships.") 
         if index == self.shipAmount: #print the ocean
             print(*self._generatedField, sep = "\n")
-        
+    
     def getField(self):
         return self._generatedField
+    
+    def getCopy(self): 
+        return self._generatedFieldCopy
         
     def getIndex(self): 
         return self.listIndex
@@ -52,5 +57,7 @@ class Main:
 
 main = Main()
 savedField = main.getField()
+savedCopyField = main.getCopy
 main.generateField(savedField)
 main.generateShip()
+main._generatedFieldCopy(savedCopyField)
