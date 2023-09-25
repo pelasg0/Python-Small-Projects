@@ -42,6 +42,9 @@ class Main:
             print("There are not enough places for the ships.") 
         if index == self.shipAmount: #print the ocean
             print(*self._generatedField, sep = "\n")
+            
+            
+        return self._generatedField
         
     
     def getField(self):
@@ -57,4 +60,3 @@ class Main:
 main = Main()
 main.generateField()
 main.generateShip()
-print(main.getCopy())
