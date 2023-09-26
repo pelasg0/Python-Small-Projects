@@ -15,11 +15,12 @@ class Main:
         
         if(self.rowAmount):
             self._generatedField = [[None]] * self.rowAmount 
+            self._generatedFieldCopy = [[None]] * self.rowAmount
         if(self.columnAmount): 
                 for i in range(0, self.rowAmount):  
                     self._generatedField[i] = ['x'] * self.columnAmount
+                    self._generatedFieldCopy[i] = ['x'] * self.columnAmount
         print(*self._generatedField, sep = "\n")
-        self._generatedFieldCopy = self._generatedField
         
         return self._generatedField, self._generatedFieldCopy
     
@@ -60,3 +61,4 @@ class Main:
 main = Main()
 main.generateField()
 main.generateShip()
+print(main.getCopy())
