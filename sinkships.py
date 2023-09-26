@@ -29,6 +29,7 @@ class Main:
         generatedRow: int
         generatedColumn: int 
         generatedPlaces: int = self.rowAmount * self.columnAmount
+        shipsCounted: int = 0 
 
         self.shipAmount: int = int(input("Enter Amount of Ships: "))
 
@@ -43,17 +44,23 @@ class Main:
             print("There are not enough places for the ships.") 
         if index == self.shipAmount: #print the ocean
             print(*self._generatedField, sep = "\n")
+        
+        '''
+        code for counting the ships gotta paste it in seperate function
+        '''
+        for indexRow in range(self.rowAmount):
+            shipsCounted = shipsCounted + self._generatedField[indexRow].count('i')
             
-            
+        print(shipsCounted)
+                
         return self._generatedField
     
     
     def gerVariableCont(self):
-        input("Take Variable Index")
+        indexValue:int = int(input("Take Variable Index"))
         pass
     def getField(self):
         return self._generatedField
-    
     def getCopy(self): 
         return self._generatedFieldCopy
         
@@ -65,3 +72,4 @@ main = Main()
 main.generateField()
 main.generateShip()
 print(main.getCopy())
+#print(main.getField())
