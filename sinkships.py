@@ -29,7 +29,6 @@ class Main:
         generatedRow: int
         generatedColumn: int 
         generatedPlaces: int = self.rowAmount * self.columnAmount
-        shipsCounted: int = 0 
 
         self.shipAmount: int = int(input("Enter Amount of Ships: "))
 
@@ -43,22 +42,40 @@ class Main:
         else:
             print("There are not enough places for the ships.") 
         if index == self.shipAmount: #print the ocean
-            print(*self._generatedField, sep = "\n")
+            #print(*self._generatedField, sep = "\n")
+            pass
+        
+                
+        return self._generatedField
+    
+    def getVariableCont(self):
+        shipsCounted: int = 0 
+        success: int = 0
         
         '''
-        code for counting the ships gotta paste it in seperate function
+        code for counting the ships
         '''
         for indexRow in range(self.rowAmount):
             shipsCounted = shipsCounted + self._generatedField[indexRow].count('i')
             
-        print(shipsCounted)
-                
-        return self._generatedField
-    
-    
-    def gerVariableCont(self):
-        indexValue:int = int(input("Take Variable Index"))
-        pass
+        while success < shipsCounted:
+            print(*self._generatedFieldCopy, sep = "\n")
+            
+            rowIndexValue:int = int(input("Input Row Number: ")) - 1
+            columnIndexValue:int = int(input("Input Column Number: ")) - 1
+            
+            if type(rowIndexValue) == int and type(columnIndexValue) == int:
+                if self._generatedField[rowIndexValue][columnIndexValue]:
+                    if self._generatedField[rowIndexValue][columnIndexValue] == 'i':
+                        if self._generatedFieldCopy[rowIndexValue][columnIndexValue] != 'i':
+                            self._generatedFieldCopy[rowIndexValue][columnIndexValue] = 'i'
+                            print(*self._generatedFieldCopy, sep = "\n")
+                            success += 1
+                            print("That's right!")
+                    elif self._generatedField[rowIndexValue][columnIndexValue] == 'x':
+                        print("That's wrong.")
+                        #print(*self._generatedField, sep = "\n")
+   
     def getField(self):
         return self._generatedField
     def getCopy(self): 
@@ -71,5 +88,4 @@ class Main:
 main = Main()
 main.generateField()
 main.generateShip()
-print(main.getCopy())
-#print(main.getField())
+main.getVariableCont()
