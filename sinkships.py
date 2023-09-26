@@ -46,8 +46,11 @@ class Main:
             
             
         return self._generatedField
-        
     
+    
+    def gerVariableCont(self):
+        input("Take Variable Index")
+        pass
     def getField(self):
         return self._generatedField
     
