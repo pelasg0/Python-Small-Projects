@@ -53,6 +53,9 @@ class Main:
         generatedRow: int
         generatedColumn: int 
         generatedPlaces: int = self.rowAmount * self.columnAmount
+        shipLength: int 
+        generatedShipDirection: int 
+        
 
         self.shipAmount: int = int(input("Enter Amount of Ships: "))
 
@@ -63,6 +66,12 @@ class Main:
                 
                 #ships gotta take multiple places
                 self._generatedField[generatedRow][generatedColumn] = "i"
+                generatedShipDirection = random.randstr('genRow', 'genColumn')
+                if generatedShipDirection == 'genRow':
+                    pass
+                if generatedShipDirection == 'genColumn':
+                    pass
+                
                 index += 1
         else:
             print("There are not enough places for the ships.") 
