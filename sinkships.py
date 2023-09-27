@@ -1,5 +1,7 @@
 
-#imports
+'''
+imports
+'''
 import random
 
 '''
@@ -47,7 +49,7 @@ class Main:
     generatedPlaces: int - the amount of places in our ocean, if it's smaller than ship amoung -> else:
     '''
     def generateShip(self):
-        index: int = 0 #index for the loop so it counts the iterations
+        index: int = 0 #index for the loop so it counts the iterations and generates ships that are equal to the ships amount
         generatedRow: int
         generatedColumn: int 
         generatedPlaces: int = self.rowAmount * self.columnAmount
@@ -58,7 +60,8 @@ class Main:
             while self.shipAmount > index: 
                 generatedRow = random.randint(0, self.rowAmount - 1)
                 generatedColumn = random.randint(0, self.columnAmount - 1)
-
+                
+                #ships gotta take multiple places
                 self._generatedField[generatedRow][generatedColumn] = "i"
                 index += 1
         else:
