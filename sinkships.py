@@ -55,6 +55,7 @@ class Main:
         generatedPlaces: int = self.rowAmount * self.columnAmount
         shipLength: int 
         generatedShipDirection: int 
+        iterationIndex: int = 0
         
 
         self.shipAmount: int = int(input("Enter Amount of Ships: "))
@@ -67,10 +68,17 @@ class Main:
                 #ships gotta take multiple places
                 self._generatedField[generatedRow][generatedColumn] = "i"
                 generatedShipDirection = random.randstr('genRow', 'genColumn')
+            
                 if generatedShipDirection == 'genRow':
-                    pass
+                    shipLength = random.randint(0, self.rowAmount)
+                        while iterationIndex < shipLength: 
+                            self._generatedField[generatedRow + 1][generatedColumn] = "i"
+                            iterationIndex += 1
                 if generatedShipDirection == 'genColumn':
-                    pass
+                    shipLength = random.randint(0, self.columnAmount)
+                        while iterationIndex < shipLength:
+                            self._generatedField[generatedRow][generatedColumn + 1] = "i"
+                            iterationIndex += 1
                 
                 index += 1
         else:
@@ -105,7 +113,7 @@ class Main:
                     if self._generatedField[rowIndexValue][columnIndexValue] == 'i':
                         if self._generatedFieldCopy[rowIndexValue][columnIndexValue] != 'i':
                             self._generatedFieldCopy[rowIndexValue][columnIndexValue] = 'i'
-                            print(*self._generatedFieldCopy, sep = "\n")
+                            print(*self._generatedField, sep = "\n")
                             success += 1
                             print("That's right!")
                     elif self._generatedField[rowIndexValue][columnIndexValue] == 'x':
