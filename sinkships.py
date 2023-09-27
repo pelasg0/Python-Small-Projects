@@ -70,12 +70,12 @@ class Main:
                 generatedShipDirection = random.randstr('genRow', 'genColumn')
             
                 if generatedShipDirection == 'genRow':
-                    shipLength = random.randint(0, self.rowAmount)
+                    shipLength = random.randint(0, self.rowAmount - 1)
                         while iterationIndex < shipLength: 
                             self._generatedField[generatedRow + 1][generatedColumn] = "i"
                             iterationIndex += 1
                 if generatedShipDirection == 'genColumn':
-                    shipLength = random.randint(0, self.columnAmount)
+                    shipLength = random.randint(0, self.columnAmount - 1)
                         while iterationIndex < shipLength:
                             self._generatedField[generatedRow][generatedColumn + 1] = "i"
                             iterationIndex += 1
