@@ -56,6 +56,7 @@ class Main:
         shipLength: int 
         generatedShipDirection: int 
         iterationIndex: int = 0
+        directionChoice: list = ['genRow', 'genColumn']
         
 
         self.shipAmount: int = int(input("Enter Amount of Ships: "))
@@ -66,20 +67,22 @@ class Main:
                 generatedColumn = random.randint(0, self.columnAmount - 1)
                 
                 #ships gotta take multiple places
-                self._generatedField[generatedRow][generatedColumn] = "i"
-                generatedShipDirection = random.randstr('genRow', 'genColumn')
+                self._generatedField[generatedRow][generatedColumn] = "O"
+                generatedShipDirection = random.choice(directionChoice)
             
                 if generatedShipDirection == 'genRow':
-                    shipLength = random.randint(0, self.rowAmount - 1)
-                        while iterationIndex < shipLength: 
-                            self._generatedField[generatedRow + 1][generatedColumn] = "i"
-                            iterationIndex += 1
+                    shipLength = random.randint(0, self.rowAmount)
+                    while iterationIndex < shipLength: 
+                        self._generatedField[generatedRow + 1][generatedColumn] = "O"
+                        iterationIndex += 1
+                        print(shipLength)
                 if generatedShipDirection == 'genColumn':
-                    shipLength = random.randint(0, self.columnAmount - 1)
-                        while iterationIndex < shipLength:
-                            self._generatedField[generatedRow][generatedColumn + 1] = "i"
-                            iterationIndex += 1
-                
+                    shipLength = random.randint(0, self.columnAmount)
+                    while iterationIndex < shipLength:
+                        self._generatedField[generatedRow][generatedColumn + 1] = "O"
+                        iterationIndex += 1
+                        print(shipLength)
+                        
                 index += 1
         else:
             print("There are not enough places for the ships.") 
@@ -103,21 +106,20 @@ class Main:
             shipsCounted = shipsCounted + self._generatedField[indexRow].count('i')
             
         while success < shipsCounted:
-            print(*self._generatedFieldCopy, sep = "\n")
+            print(*self._generatedField, sep = "\n")
             
             rowIndexValue:int = int(input("Input Row Number: ")) - 1
             columnIndexValue:int = int(input("Input Column Number: ")) - 1
             
-            if type(rowIndexValue) == int and type(columnIndexValue) == int:
-                if self._generatedField[rowIndexValue][columnIndexValue]:
-                    if self._generatedField[rowIndexValue][columnIndexValue] == 'i':
-                        if self._generatedFieldCopy[rowIndexValue][columnIndexValue] != 'i':
-                            self._generatedFieldCopy[rowIndexValue][columnIndexValue] = 'i'
-                            print(*self._generatedField, sep = "\n")
-                            success += 1
-                            print("That's right!")
-                    elif self._generatedField[rowIndexValue][columnIndexValue] == 'x':
-                        print("That's wrong.")
+
+            if self._generatedField[rowIndexValue][columnIndexValue] == 'i':
+                if self._generatedFieldCopy[rowIndexValue][columnIndexValue] != 'i':
+                    self._generatedFieldCopy[rowIndexValue][columnIndexValue] = 'i'
+                    print(*self._generatedField, sep = "\n")
+                    success += 1
+                    print("That's right!")
+            elif self._generatedField[rowIndexValue][columnIndexValue] == 'x':
+                print("That's wrong.")
     
     '''
     getter and setter functions used for debugging or testing purposes mostly
