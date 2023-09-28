@@ -71,13 +71,13 @@ class Main:
                 generatedShipDirection = random.choice(directionChoice)
             
                 if generatedShipDirection == 'genRow':
-                    shipLength = random.randint(0, self.rowAmount)
+                    shipLength = random.randint(0, 3)
                     while iterationIndex < shipLength: 
                         self._generatedField[generatedRow + 1][generatedColumn] = "O"
                         iterationIndex += 1
                         print(shipLength)
                 if generatedShipDirection == 'genColumn':
-                    shipLength = random.randint(0, self.columnAmount)
+                    shipLength = random.randint(0, 3)
                     while iterationIndex < shipLength:
                         self._generatedField[generatedRow][generatedColumn + 1] = "O"
                         iterationIndex += 1
@@ -131,6 +131,10 @@ class Main:
     def getIndex(self): 
         return self.listIndex
 
+'''
+--Notes--
+    after it generates a number it take the max amount of the columns/rows
+'''
 
 main = Main()
 main.generateField()
