@@ -71,17 +71,17 @@ class Main:
                 generatedShipDirection = random.choice(directionChoice)
             
                 if generatedShipDirection == 'genRow':
-                    shipLength = random.randint(0, 3)
+                    shipLength = 2
                     while iterationIndex < shipLength: 
                         self._generatedField[generatedRow + 1][generatedColumn] = "O"
                         iterationIndex += 1
-                        print(shipLength)
+                        print(generatedRow + 1 , generatedColumn)
                 if generatedShipDirection == 'genColumn':
-                    shipLength = random.randint(0, 3)
+                    shipLength = 2
                     while iterationIndex < shipLength:
                         self._generatedField[generatedRow][generatedColumn + 1] = "O"
                         iterationIndex += 1
-                        print(shipLength)
+                        print(generatedRow + 1 , generatedColumn)
                         
                 index += 1
         else:
