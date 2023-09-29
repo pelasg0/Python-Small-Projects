@@ -35,8 +35,8 @@ class Main:
             self._generatedFieldCopy = [[None]] * self.rowAmount
         if(self.columnAmount and isinstance(self.columnAmount, int)): 
                 for i in range(0, self.rowAmount):  
-                    self._generatedField[i] = ['x'] * self.columnAmount
-                    self._generatedFieldCopy[i] = ['x'] * self.columnAmount
+                    self._generatedField[i] = ['~'] * self.columnAmount
+                    self._generatedFieldCopy[i] = ['~'] * self.columnAmount
         print(*self._generatedField, sep = "\n")
             
         return self._generatedField, self._generatedFieldCopy
@@ -57,34 +57,38 @@ class Main:
         generatedShipDirection: int 
         iterationIndex: int = 0
         directionChoice: list = ['genRow', 'genColumn']
+
         
 
-        self.shipAmount: int = int(input("Enter Amount of Ships: "))
+        #self.shipAmount: int = int(input("Enter Amount of Ships: "))
 
-        if self.shipAmount <= generatedPlaces: 
-            while self.shipAmount > index: 
-                generatedRow = random.randint(0, self.rowAmount - 1)
-                generatedColumn = random.randint(0, self.columnAmount - 1)
-                
-                #ships gotta take multiple places
-                self._generatedField[generatedRow][generatedColumn] = "O"
-                generatedShipDirection = random.choice(directionChoice)
-            
-                if generatedShipDirection == 'genRow':
-                    shipLength = 2
-                    while iterationIndex < shipLength: 
-                        self._generatedField[generatedRow + 1][generatedColumn] = "O"
-                        iterationIndex += 1
-                        print(generatedRow + 1 , generatedColumn)
-                if generatedShipDirection == 'genColumn':
-                    shipLength = 2
-                    while iterationIndex < shipLength:
-                        self._generatedField[generatedRow][generatedColumn + 1] = "O"
-                        iterationIndex += 1
-                        print(generatedRow + 1 , generatedColumn)
-                        
-                index += 1
-        else:
+        # this whole thing can be used as the code for ONE ship gotta put it in another loop 
+        #if self.shipAmount <= generatedPlaces: 
+
+        #while self.shipAmount > index: 
+        generatedRow = random.randint(0, self.rowAmount - 1)
+        generatedColumn = random.randint(0, self.columnAmount - 1)
+        
+        #ships gotta take multiple places
+        #self._generatedField[generatedRow][generatedColumn] = "O"
+        generatedShipDirection = random.choice(directionChoice)
+    
+        if generatedShipDirection == 'genRow':
+            shipLength = 5
+            while iterationIndex < shipLength: 
+                self._generatedField[generatedRow + iterationIndex][generatedColumn] = "O"
+                iterationIndex += 1
+                #--he takes all the time the same generated row and column thats why the position doesnt change at all--
+                print(generatedRow + iterationIndex , generatedColumn)
+        if generatedShipDirection == 'genColumn':
+            shipLength = 5
+            while iterationIndex < shipLength:
+                self._generatedField[generatedRow][generatedColumn + iterationIndex] = "O"
+                iterationIndex += 1
+                print(generatedRow, generatedColumn + iterationIndex)
+                    
+            #index += 1
+        #else:
             print("There are not enough places for the ships.") 
             
         return self._generatedField
@@ -118,7 +122,7 @@ class Main:
                     print(*self._generatedField, sep = "\n")
                     success += 1
                     print("That's right!")
-            elif self._generatedField[rowIndexValue][columnIndexValue] == 'x':
+            elif self._generatedField[rowIndexValue][columnIndexValue] == '~':
                 print("That's wrong.")
     
     '''
