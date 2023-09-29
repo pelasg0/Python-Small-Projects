@@ -1,30 +1,30 @@
 
 '''
-imports
+    imports
 '''
 import random
 
 '''
-class representing the whole game
+    class representing the whole game
 '''
 class Main: 
     '''
-    _generatedField: list - the list that stores all the 'ships'
-    _generatedFieldCopy: list - the list that acts as an 'overlay' so you cannot see where the ships are 
+        _generatedField: list - the list that stores all the 'ships'
+        _generatedFieldCopy: list - the list that acts as an 'overlay' so you cannot see where the ships are 
     '''
     _generatedField: list = []
     _generatedFieldCopy: list = []
     
     '''
-    in case we need a constructor
+        in case we need a constructor
     '''
     def __init__(self):
         pass
 
     '''
-    generates an empty 'ocean'
-    rowAmount: int - how many rows does the field have
-    columnAmount: int - how many columns does the field have
+        generates an empty 'ocean'
+        rowAmount: int - how many rows does the field have
+        columnAmount: int - how many columns does the field have
     '''
     def generateField(self):
         self.rowAmount: int = int(input("Enter Amount of Rows: "))
@@ -42,70 +42,72 @@ class Main:
         return self._generatedField, self._generatedFieldCopy
         
     '''
-    generetes ships that are marked as 'i' in the 'ocean' 
-    index: int - index that counts the iterations of the loop
-    generatedRow: int - where the random row position of the ship is saved
-    generatedColumn: int - where the random column position of the ship is saved
-    generatedPlaces: int - the amount of places in our ocean, if it's smaller than ship amoung -> else:
+        generetes ships that are marked as '𓊝' in the 'ocean' 
+        index: int - index that counts the iterations of the loop
+        generatedRow: int - where the random row position of the ship is saved
+        generatedColumn: int - where the random column position of the ship is saved
+        generatedPlaces: int - the amount of places in our ocean, if it's smaller than ship amoung -> else:
     '''
     def generateShip(self):
 
         generatedRow: int
         generatedColumn: int 
         shipLength: int 
-        generatedShipDirection: int 
+        generatedShipDirection: int
         iterationIndex: int = 0
         directionChoice: list = ['genRow', 'genColumn']
+        maxSymbols: int = 5
         
-        shipAmount = 5
+        shipAmount: int = int(input('Amount of Ships: '))
         index = 0 
 
-        while shipAmount > index:
+        if shipAmount < self.rowAmount * self.columnAmount:
+            while shipAmount > index:
+                '''
+                    -5 so i make sure that the ships dont come out of the bondary for now
+                    not a permanent solution i promis :D 
+                '''
+                generatedRow = random.randint(0, self.rowAmount - 5)
+                generatedColumn = random.randint(0, self.columnAmount - 5)
+                
+                generatedShipDirection = random.choice(directionChoice)
             
-            generatedRow = random.randint(0, self.rowAmount - 1)
-            generatedColumn = random.randint(0, self.columnAmount - 1)
-            
-            generatedShipDirection = random.choice(directionChoice)
-        
-            if generatedShipDirection == 'genRow':
-                #print(iterationIndex)
-                iterationIndex = 0
-                shipLength = random.randint(0, 5)
-                while iterationIndex < shipLength: 
-                    self._generatedField[generatedRow + iterationIndex][generatedColumn] = '𓊝'
-                    iterationIndex += 1
-                    #--he takes all the time the same generated row and column thats why the position doesnt change at all--
-                    print(generatedRow + iterationIndex , generatedColumn)
-            if generatedShipDirection == 'genColumn':
-                #print(iterationIndex)
-                iterationIndex = 0
-                shipLength = random.randint(0, 5)
-                while iterationIndex < shipLength:
-                    self._generatedField[generatedRow][generatedColumn + iterationIndex] = '𓊝' 
-                    iterationIndex += 1
-                    print(generatedRow, generatedColumn + iterationIndex)
+                if generatedShipDirection == 'genRow':
+                    iterationIndex = 0
+                    shipLength = random.randint(0, maxSymbols)
+                    while iterationIndex < shipLength: 
+                        self._generatedField[generatedRow + iterationIndex][generatedColumn] = '𓊝'
+                        iterationIndex += 1
+                if generatedShipDirection == 'genColumn':
+                    #print(iterationIndex)
+                    iterationIndex = 0
+                    shipLength = random.randint(0, maxSymbols)
+                    while iterationIndex < shipLength:
+                        self._generatedField[generatedRow][generatedColumn + iterationIndex] = '𓊝' 
+                        iterationIndex += 1
 
-            print(generatedRow, generatedColumn)
-            index += 1
+                index += 1
+        else: 
+            print('Too many ships.')
                 
         return self._generatedField
     
 
     
     '''
-    checks if there's a ship or not 
-    shipsCounted: int - the amount of ships in the 'ocean' 
-    success: int - the amount of found ships 
+        checks if there's a ship or not 
+        shipsCounted: int - the amount of ships in the 'ocean' 
+        success: int - the amount of found ships 
     '''
     def getVariableCont(self):
         shipsCounted: int = 0 
         success: int = -1
         
         '''
-        code for counting the ships
+            code for counting the ships
         '''
         for indexRow in range(self.rowAmount):
-            shipsCounted = shipsCounted + self._generatedField[indexRow].count('i')
+            shipsCounted = shipsCounted + self._generatedField[indexRow].count('𓊝')
             
         while success < shipsCounted:
             print(*self._generatedField, sep = "\n")
@@ -114,17 +116,19 @@ class Main:
             columnIndexValue:int = int(input("Input Column Number: ")) - 1
             
 
-            if self._generatedField[rowIndexValue][columnIndexValue] == 'i':
-                if self._generatedFieldCopy[rowIndexValue][columnIndexValue] != 'i':
-                    self._generatedFieldCopy[rowIndexValue][columnIndexValue] = 'i'
+            if self._generatedField[rowIndexValue][columnIndexValue] == '𓊝':
+                if self._generatedFieldCopy[rowIndexValue][columnIndexValue] != '𓊝':
+                    self._generatedFieldCopy[rowIndexValue][columnIndexValue] = '𓊝'
                     print(*self._generatedField, sep = "\n")
                     success += 1
                     print("That's right!")
+                else: 
+                    print("That's wrong.")
             elif self._generatedField[rowIndexValue][columnIndexValue] == '~':
                 print("That's wrong.")
     
     '''
-    getter and setter functions used for debugging or testing purposes mostly
+        getter and setter functions used for debugging or testing purposes mostly
     '''
     def getField(self):
         return self._generatedField
@@ -132,11 +136,6 @@ class Main:
         return self._generatedFieldCopy
     def getIndex(self): 
         return self.listIndex
-
-'''
---Notes--
-    after it generates a number it take the max amount of the columns/rows
-'''
 
 main = Main()
 main.generateField()
