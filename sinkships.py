@@ -49,50 +49,48 @@ class Main:
     generatedPlaces: int - the amount of places in our ocean, if it's smaller than ship amoung -> else:
     '''
     def generateShip(self):
-        index: int = 0 #index for the loop so it counts the iterations and generates ships that are equal to the ships amount
+
         generatedRow: int
         generatedColumn: int 
-        generatedPlaces: int = self.rowAmount * self.columnAmount
         shipLength: int 
         generatedShipDirection: int 
         iterationIndex: int = 0
         directionChoice: list = ['genRow', 'genColumn']
-
         
+        shipAmount = 5
+        index = 0 
 
-        #self.shipAmount: int = int(input("Enter Amount of Ships: "))
-
-        # this whole thing can be used as the code for ONE ship gotta put it in another loop 
-        #if self.shipAmount <= generatedPlaces: 
-
-        #while self.shipAmount > index: 
-        generatedRow = random.randint(0, self.rowAmount - 1)
-        generatedColumn = random.randint(0, self.columnAmount - 1)
-        
-        #ships gotta take multiple places
-        #self._generatedField[generatedRow][generatedColumn] = "O"
-        generatedShipDirection = random.choice(directionChoice)
-    
-        if generatedShipDirection == 'genRow':
-            shipLength = 5
-            while iterationIndex < shipLength: 
-                self._generatedField[generatedRow + iterationIndex][generatedColumn] = "O"
-                iterationIndex += 1
-                #--he takes all the time the same generated row and column thats why the position doesnt change at all--
-                print(generatedRow + iterationIndex , generatedColumn)
-        if generatedShipDirection == 'genColumn':
-            shipLength = 5
-            while iterationIndex < shipLength:
-                self._generatedField[generatedRow][generatedColumn + iterationIndex] = "O"
-                iterationIndex += 1
-                print(generatedRow, generatedColumn + iterationIndex)
-                    
-            #index += 1
-        #else:
-            print("There are not enough places for the ships.") 
+        while shipAmount > index:
             
+            generatedRow = random.randint(0, self.rowAmount - 1)
+            generatedColumn = random.randint(0, self.columnAmount - 1)
+            
+            generatedShipDirection = random.choice(directionChoice)
+        
+            if generatedShipDirection == 'genRow':
+                #print(iterationIndex)
+                iterationIndex = 0
+                shipLength = random.randint(0, 5)
+                while iterationIndex < shipLength: 
+                    self._generatedField[generatedRow + iterationIndex][generatedColumn] = '𓊝'
+                    iterationIndex += 1
+                    #--he takes all the time the same generated row and column thats why the position doesnt change at all--
+                    print(generatedRow + iterationIndex , generatedColumn)
+            if generatedShipDirection == 'genColumn':
+                #print(iterationIndex)
+                iterationIndex = 0
+                shipLength = random.randint(0, 5)
+                while iterationIndex < shipLength:
+                    self._generatedField[generatedRow][generatedColumn + iterationIndex] = '𓊝' 
+                    iterationIndex += 1
+                    print(generatedRow, generatedColumn + iterationIndex)
+
+            print(generatedRow, generatedColumn)
+            index += 1
+                
         return self._generatedField
     
+
     
     '''
     checks if there's a ship or not 
