@@ -30,14 +30,17 @@ class Main:
         self.rowAmount: int = int(input("Enter Amount of Rows: "))
         self.columnAmount: int = int(input("Enter Amount of Items on a Row: "))
         
-        if(self.rowAmount and isinstance(self.rowAmount, int)):
-            self._generatedField = [[None]] * self.rowAmount 
-            self._generatedFieldCopy = [[None]] * self.rowAmount
-        if(self.columnAmount and isinstance(self.columnAmount, int)): 
-                for i in range(0, self.rowAmount):  
-                    self._generatedField[i] = ['~'] * self.columnAmount
-                    self._generatedFieldCopy[i] = ['~'] * self.columnAmount
-        print(*self._generatedField, sep = "\n")
+        if isinstance(self.rowAmount, int) and isinstance(self.columnAmount, int):
+            if(self.rowAmount and isinstance(self.rowAmount, int)):
+                self._generatedField = [[None]] * self.rowAmount 
+                self._generatedFieldCopy = [[None]] * self.rowAmount
+            if(self.columnAmount and isinstance(self.columnAmount, int)): 
+                    for i in range(0, self.rowAmount):  
+                        self._generatedField[i] = ['~'] * self.columnAmount
+                        self._generatedFieldCopy[i] = ['~'] * self.columnAmount
+            print(*self._generatedField, sep = "\n")
+        else: 
+            print("Not an integer.")
             
         return self._generatedField, self._generatedFieldCopy
         
@@ -46,19 +49,21 @@ class Main:
         index: int - index that counts the iterations of the loop
         generatedRow: int - where the random row position of the ship is saved
         generatedColumn: int - where the random column position of the ship is saved
-        generatedPlaces: int - the amount of places in our ocean, if it's smaller than ship amoung -> else:
+        directionChoice: list - list where the two possible directions are saved
+        generatedShipDirection: str - a var where one of the directions is saved 
+        shipAmount: int - input var where you baiscally can say how many ships you want but it's not so precise since somehow the ships can overlap
+        maxSymbols: int - max length of a ship
+        iterationIndex: int - counts the parts of a ship, is used to extend the ship so it has more than one part
     '''
     def generateShip(self):
-
+        directionChoice: list = ['genRow', 'genColumn']
+        shipAmount: int = int(input('Amount of Ships: '))
         generatedRow: int
         generatedColumn: int 
         shipLength: int 
-        generatedShipDirection: int
-        iterationIndex: int = 0
-        directionChoice: list = ['genRow', 'genColumn']
+        generatedShipDirection: str
+        iterationIndex: int = 0      
         maxSymbols: int = 5
-        
-        shipAmount: int = int(input('Amount of Ships: '))
         index = 0 
 
         if shipAmount < self.rowAmount * self.columnAmount:
@@ -138,6 +143,9 @@ class Main:
     def getIndex(self): 
         return self.listIndex
 
+'''
+    func where the game can be started
+'''
 def play():
     main = Main()
     main.generateField()
