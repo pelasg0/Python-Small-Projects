@@ -1,4 +1,3 @@
-
 '''
     imports
 '''
@@ -6,6 +5,7 @@ import random
 
 '''
     class representing the whole game
+    game is in test mode so all the generated ships are shown 
 '''
 class Main: 
     '''
@@ -64,7 +64,7 @@ class Main:
         if shipAmount < self.rowAmount * self.columnAmount:
             while shipAmount > index:
                 '''
-                    -5 so i make sure that the ships dont come out of the bondary for now
+                    (-5) so i make sure that the ships dont come out of the bondary for now
                     not a permanent solution i promis :D 
                 '''
                 generatedRow = random.randint(0, self.rowAmount - 5)
@@ -79,7 +79,6 @@ class Main:
                         self._generatedField[generatedRow + iterationIndex][generatedColumn] = '𓊝'
                         iterationIndex += 1
                 if generatedShipDirection == 'genColumn':
-                    #print(iterationIndex)
                     iterationIndex = 0
                     shipLength = random.randint(0, maxSymbols)
                     while iterationIndex < shipLength:
@@ -115,17 +114,19 @@ class Main:
             rowIndexValue:int = int(input("Input Row Number: ")) - 1
             columnIndexValue:int = int(input("Input Column Number: ")) - 1
             
-
-            if self._generatedField[rowIndexValue][columnIndexValue] == '𓊝':
-                if self._generatedFieldCopy[rowIndexValue][columnIndexValue] != '𓊝':
-                    self._generatedFieldCopy[rowIndexValue][columnIndexValue] = '𓊝'
-                    print(*self._generatedField, sep = "\n")
-                    success += 1
-                    print("That's right!")
-                else: 
+            if rowIndexValue < self.rowAmount and columnIndexValue < self.columnAmount:
+                if self._generatedField[rowIndexValue][columnIndexValue] == '𓊝':
+                    if self._generatedFieldCopy[rowIndexValue][columnIndexValue] != '𓊝':
+                        self._generatedFieldCopy[rowIndexValue][columnIndexValue] = '𓊝'
+                        print(*self._generatedField, sep = "\n")
+                        success += 1
+                        print("That's right!")
+                    else: 
+                        print("That's wrong.")
+                elif self._generatedField[rowIndexValue][columnIndexValue] == '~':
                     print("That's wrong.")
-            elif self._generatedField[rowIndexValue][columnIndexValue] == '~':
-                print("That's wrong.")
+            else: 
+                print("There are not so many rows/columns.")
     
     '''
         getter and setter functions used for debugging or testing purposes mostly
@@ -137,7 +138,12 @@ class Main:
     def getIndex(self): 
         return self.listIndex
 
-main = Main()
-main.generateField()
-main.generateShip()
-main.getVariableCont()
+def play():
+    main = Main()
+    main.generateField()
+    main.generateShip()
+    main.getVariableCont()
+
+
+play()
+
