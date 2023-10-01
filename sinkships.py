@@ -6,6 +6,7 @@ import random
 '''
     class representing the whole game
     game is in test mode so all the generated ships are shown 
+    one day gotta take care of the erros you get if you dont write an int but for now the game is pretty much complete
 '''
 class Main: 
     '''
