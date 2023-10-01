@@ -5,7 +5,8 @@ import sys,time,random
 
 
 class main: 
-    _savedInput: int 
+    _savedUserInput: int 
+    _generatedPcInput: int 
     _startSymbols: list = [''' 
     _______
 ---'   ____)
@@ -34,18 +35,25 @@ class main:
     _signs: list = ['rock', 'paper', 'scissors']
 
     def getUserInput(self): 
-        self._savedInput: int = input('__' + '(1): ' + self._startSymbols[0] + '__' +  '(2): ' +  self._startSymbols[1] + '__' +  '(3): ' +  self._startSymbols[2] + 'Which one do you choose? ')
-        
+        self._savedUserInput: int = input('__' + '(1): ' + self._startSymbols[0] + '__' +  '(2): ' +  self._startSymbols[1] + '__' +  '(3): ' +  self._startSymbols[2] + 'Which one do you choose? ')
+        return self._savedUserInput
 
-        return self._savedInput
-
-    def getInput(self):
-        return self._savedInput
+    def genPcInput(self): 
+        self._generatedPcInput = random.randint(1, 3)
+    def compareInputs(self):
+        pass
+    def getUserInput(self):
+        return self._savedUserInput
+    
+    def getPcInput(self):
+        return self._generatedPcInput
     
 main = main()
 sign = main._signs
 main.getUserInput()
-#print(main.getInput())
+main.genPcInput()
+
+#print(main.getUserInput())
 
 
 
