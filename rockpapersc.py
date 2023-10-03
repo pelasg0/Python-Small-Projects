@@ -42,7 +42,11 @@ class main:
         self._generatedPcInput = random.randint(1, 3)
         return self._generatedPcInput
     def compareInputs(self):
-        pass
+        if self._savedUserInput == 1 and self._generatedPcInput == 3 or self._savedUserInput == 2 and self._generatedPcInput == 1 or self._savedUserInput == 3 and self._generatedPcInput == 1:
+            print("User Won")
+        elif self._generatedPcInput == 1 and self._savedUserInput == 3 or self._generatedPcInput == 2 and self._savedUserInput == 1 or self._generatedPcInput == 3 and self._savedUserInput == 1:
+            print("Pc Won")
+
     def getUserInput(self):
         return self._savedUserInput
     
@@ -52,6 +56,7 @@ class main:
 main = main()
 main.genUserInput()
 main.genPcInput()
+main.compareInputs()
 
 
 #print(main.getUserInput())
