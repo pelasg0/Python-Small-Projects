@@ -86,7 +86,10 @@ class Database:
         for applicant in self._applicantList:
              if applicant.getFirstName() == name:
                  return applicant
-
+    def printApplicants(self):
+        for applicant in self._applicantList:
+            print(applicant._firstName + ' ' + applicant._secondName)
+        
     '''
     Getter and setter methods section
     '''
@@ -113,7 +116,7 @@ def play():
 
         #print all applicants
         if opt == 2:
-            pass
+            database.printApplicants()
         
         #delete applicant
         if opt == 3:
