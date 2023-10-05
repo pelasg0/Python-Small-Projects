@@ -1,31 +1,31 @@
 '''
-    imports
+imports
 '''
 import random
 
 '''
-    class representing the whole game
-    game is in test mode so all the generated ships are shown 
-    one day gotta take care of the erros you get if you dont write an int but for now the game is pretty much complete
+class representing the whole game
+game is in test mode so all the generated ships are shown 
+one day gotta take care of the erros you get if you dont write an int but for now the game is pretty much complete
 '''
 class Main: 
     '''
-        _generatedField: list - the list that stores all the 'ships'
-        _generatedFieldCopy: list - the list that acts as an 'overlay' so you cannot see where the ships are 
+    _generatedField: list - the list that stores all the 'ships'
+    _generatedFieldCopy: list - the list that acts as an 'overlay' so you cannot see where the ships are 
     '''
     _generatedField: list = []
     _generatedFieldCopy: list = []
     
     '''
-        in case we need a constructor
+    in case we need a constructor
     '''
     def __init__(self):
         pass
 
     '''
-        generates an empty 'ocean'
-        rowAmount: int - how many rows does the field have
-        columnAmount: int - how many columns does the field have
+    generates an empty 'ocean'
+    rowAmount: int - how many rows does the field have
+    columnAmount: int - how many columns does the field have
     '''
     def generateField(self):
         self.rowAmount: int = int(input("Enter Amount of Rows: "))
@@ -46,15 +46,15 @@ class Main:
         return self._generatedField, self._generatedFieldCopy
         
     '''
-        generetes ships that are marked as '𓊝' in the 'ocean' 
-        index: int - index that counts the iterations of the loop
-        generatedRow: int - where the random row position of the ship is saved
-        generatedColumn: int - where the random column position of the ship is saved
-        directionChoice: list - list where the two possible directions are saved
-        generatedShipDirection: str - a var where one of the directions is saved 
-        shipAmount: int - input var where you baiscally can say how many ships you want but it's not so precise since somehow the ships can overlap
-        maxSymbols: int - max length of a ship
-        iterationIndex: int - counts the parts of a ship, is used to extend the ship so it has more than one part
+    generetes ships that are marked as '𓊝' in the 'ocean' 
+    index: int - index that counts the iterations of the loop
+    generatedRow: int - where the random row position of the ship is saved
+    generatedColumn: int - where the random column position of the ship is saved
+    directionChoice: list - list where the two possible directions are saved
+    generatedShipDirection: str - a var where one of the directions is saved 
+    shipAmount: int - input var where you baiscally can say how many ships you want but it's not so precise since somehow the ships can overlap
+    maxSymbols: int - max length of a ship
+    iterationIndex: int - counts the parts of a ship, is used to extend the ship so it has more than one part
     '''
     def generateShip(self):
         directionChoice: list = ['genRow', 'genColumn']
@@ -100,16 +100,16 @@ class Main:
 
     
     '''
-        checks if there's a ship or not 
-        shipsCounted: int - the amount of ships in the 'ocean' 
-        success: int - the amount of found ships 
+    checks if there's a ship or not 
+    shipsCounted: int - the amount of ships in the 'ocean' 
+    success: int - the amount of found ships 
     '''
     def getVariableCont(self):
         shipsCounted: int = 0 
         success: int = -1
         
         '''
-            code for counting the ships
+        code for counting the ships
         '''
         for indexRow in range(self.rowAmount):
             shipsCounted = shipsCounted + self._generatedField[indexRow].count('𓊝')
@@ -135,7 +135,7 @@ class Main:
                 print("There are not so many rows/columns.")
     
     '''
-        getter and setter functions used for debugging or testing purposes mostly
+    getter and setter functions used for debugging or testing purposes mostly
     '''
     def getField(self):
         return self._generatedField
@@ -145,7 +145,7 @@ class Main:
         return self.listIndex
 
 '''
-    func where the game can be started
+func where the game can be started
 '''
 def play():
     main = Main()
