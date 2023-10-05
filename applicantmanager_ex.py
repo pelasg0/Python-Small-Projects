@@ -22,10 +22,10 @@ class Applicant:
     _city:str = None
     _age:int = None
     _address:str = None
-    _birthday:List[int]
+    _birthday:list = None
     _certificate:bool = None
     _expectedSalary:float = None
-    _applicantEntityList:List = None
+    _applicantEntityList:list = None
 
     def __init__(self):
         self._id = random.randint(0, 10000)
@@ -49,10 +49,6 @@ class Applicant:
         return self._gender
     def getCity(self):
         return self._city
-    
-    def getSecondName(self):
-        return self._secondName
-    
     def getAge(self):
         return self._age
     def getAddress(self):
@@ -61,13 +57,21 @@ class Applicant:
         return self._birthday
     def getCertificate(self):
         return self._certificate
-    
-    
-    # only the set methods i need because too lazy to write all of them :X
+    #--
+    def setFirstName(self, firstName: str):
+        self._firstName = firstName
+    def setSecondName(self, secondName: str):
+        self._secondName = secondName
+    def setGender(self, gender):
+        self._gender = gender
+    def setCity(self, city):
+        self._city = city 
     def setAge(self, age: int):
         self._age = age
     def setAddress(self, address: str):
         self._address = address
+    def setBirthday(self, birthday: list)
+        self._birthday = birthday 
     def setCertificate(self, certificate: bool):
         self._certificate = certificate
 
@@ -92,7 +96,7 @@ class Database:
         for applicant in self._applicantList:
              if applicant.getFirstName() == name:
                  return applicant
-        return None
+
 
 database = Database()
 applicantEntityList = Applicant._applicantEntityList
