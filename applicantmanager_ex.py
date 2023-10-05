@@ -6,8 +6,6 @@ Application where you can save and sort all the applicants
 """
 Imports
 """
-from typing import List
-from typing import TypeAlias
 import random
 
 '''
@@ -24,7 +22,6 @@ class Applicant:
     _birthday:list = None
     _certificate:bool = None
     _expectedSalary:float = None
-    _applicantEntityList:list = None
 
     def __init__(self):
         self._id = random.randint(0, 10000)
@@ -78,50 +75,50 @@ class Applicant:
 A class used to represent the Database the Applicants will be saved in
 '''
 class Database:
-    _applicantList: List[Applicant] = None
+    _applicantList: list[Applicant] = None
 
-    def __init__(self, applicantList: List[Applicant] = None):
+    def __init__(self, applicantList: list[Applicant] = None):
         if applicantList is None:
             applicantList = []
         self._applicantList = applicantList
-
-    '''
-    Getter and setter methods section
-    '''
-    def insertApplicant(self, applicant: Applicant):
-        self._applicantList.append(applicant)
 
     def findApplicant(self, name: str):
         for applicant in self._applicantList:
              if applicant.getFirstName() == name:
                  return applicant
 
+    '''
+    Getter and setter methods section
+    '''
+    #--
+
+
 def play():  
     database = Database()
-    applicantEntityList = Applicant._applicantEntityList
-    prefix = "created_"
-    suffix = "_applicant"
-    var_num = 0
-    def mainMenu():
-        opt = int(input("What do you want: 1. Create Applicant 2. Print all Applicants: "))
-        return opt
-    opt = mainMenu()
+    applicantList = database._applicantList
+    applicant = None
+
+    while applicant == None:
+        def mainMenu():
+            opt = int(input("What do you want: 1. Add Applicant 2. Print all Applicants: "))
+            return opt
+
+        opt = mainMenu()
+        #add applicant
+        if opt == 1:
+            applicant = Applicant()
+            applicantList.append(applicant)
+            print(applicant.getFirstName())
+            applicant = None
+
+        #print all applicants
+        if opt == 2:
+            pass
+        
+        #delete applicant
+        if opt == 3:
+            pass
     
-    if opt == 1:
-        var_num += 1
-        globals()[prefix + str(var_num) + suffix] = Applicant()
-        applicantEntityList.append(applicantEntityList) #need a getter for the list <<undone>>
-        print(globals()[prefix + str(var_num) + suffix].getFirstName())
-        mainMenu()
-    
-    #add applicant in database
-    if opt == 2:
-        pass
-    
-    #print all applicants option
-    if opt == 3:
-        mainMenu()
-        pass
 play()        
     
 
