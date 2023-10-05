@@ -69,7 +69,7 @@ class Applicant:
         self._age = age
     def setAddress(self, address: str):
         self._address = address
-    def setBirthday(self, birthday: list)
+    def setBirthday(self, birthday: list):
         self._birthday = birthday 
     def setCertificate(self, certificate: bool):
         self._certificate = certificate
@@ -96,23 +96,21 @@ class Database:
              if applicant.getFirstName() == name:
                  return applicant
 
-
-database = Database()
-applicantEntityList = Applicant._applicantEntityList
-prefix = "created_"
-suffix = "_applicant"
-var_num = 0
-
 def play():  
+    database = Database()
+    applicantEntityList = Applicant._applicantEntityList
+    prefix = "created_"
+    suffix = "_applicant"
+    var_num = 0
     def mainMenu():
-        opt = int(input("What do you want: 1. Create Applicant 2. Print all Applicants"))
+        opt = int(input("What do you want: 1. Create Applicant 2. Print all Applicants: "))
         return opt
     opt = mainMenu()
     
     if opt == 1:
         var_num += 1
         globals()[prefix + str(var_num) + suffix] = Applicant()
-        applicantEntityList.append(applicantEntityList)#need a getter for the list <<undone>>
+        applicantEntityList.append(applicantEntityList) #need a getter for the list <<undone>>
         print(globals()[prefix + str(var_num) + suffix].getFirstName())
         mainMenu()
     
@@ -124,23 +122,6 @@ def play():
     if opt == 3:
         mainMenu()
         pass
-
-    
-
-
-    
-
-
-
-#print(f"That's applicant {foundApplicant.getFirstName()} on {foundApplicant.getAddress()} and he is {foundApplicant.getAge()}")
-
-
-
-
-
-
-
-
-    
+play()        
     
 
