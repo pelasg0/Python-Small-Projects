@@ -10,11 +10,10 @@ from typing import List
 from typing import TypeAlias
 import random
 
-
+'''
+A class used to represent the Applicants
+'''
 class Applicant:
-    '''
-    A class used to represent the Applicants 
-    '''
     _id:int = None
     _firstName:str = None
     _secondName:str = None
@@ -75,10 +74,10 @@ class Applicant:
     def setCertificate(self, certificate: bool):
         self._certificate = certificate
 
+'''
+A class used to represent the Database the Applicants will be saved in
+'''
 class Database:
-    '''
-    A class used to represent the Database the Applicants will be saved in 
-    '''
     _applicantList: List[Applicant] = None
 
     def __init__(self, applicantList: List[Applicant] = None):
@@ -104,27 +103,27 @@ prefix = "created_"
 suffix = "_applicant"
 var_num = 0
 
-def mainMenu():
-    opt = int(input("What do you want: 1. Create Applicant 2. Print all Applicants"))
-    return opt
-
-opt = mainMenu()
-
-if opt == 1:
-    var_num += 1
-    globals()[prefix + str(var_num) + suffix] = Applicant()
-    applicantEntityList.append(applicantEntityList)#need a getter for the list <<undone>>
-    print(globals()[prefix + str(var_num) + suffix].getFirstName())
-    mainMenu()
-
-#add applicant in database
-if opt == 2:
-    pass
-
-#print all applicants option
-if opt == 3:
-    mainMenu()
-    pass
+def play():  
+    def mainMenu():
+        opt = int(input("What do you want: 1. Create Applicant 2. Print all Applicants"))
+        return opt
+    opt = mainMenu()
+    
+    if opt == 1:
+        var_num += 1
+        globals()[prefix + str(var_num) + suffix] = Applicant()
+        applicantEntityList.append(applicantEntityList)#need a getter for the list <<undone>>
+        print(globals()[prefix + str(var_num) + suffix].getFirstName())
+        mainMenu()
+    
+    #add applicant in database
+    if opt == 2:
+        pass
+    
+    #print all applicants option
+    if opt == 3:
+        mainMenu()
+        pass
 
     
 
