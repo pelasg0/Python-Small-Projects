@@ -87,9 +87,10 @@ class Database:
              if applicant.getFirstName() == name:
                  return applicant
     def printApplicants(self):
+        applicantIndex: int = 0
         for applicant in self._applicantList:
-            print(applicant._firstName + ' ' + applicant._secondName)
-        
+            print(str(applicantIndex) + ' ' + applicant._firstName + ' ' + applicant._secondName)
+            applicantIndex += 1
     '''
     Getter and setter methods section
     '''
@@ -122,6 +123,4 @@ def play():
         if opt == 3:
             pass
     
-play()        
-    
-
+play()   
