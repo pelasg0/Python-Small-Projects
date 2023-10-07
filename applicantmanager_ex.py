@@ -85,7 +85,7 @@ class Database:
     def findApplicant(self, name: str):
         for applicant in self._applicantList:
              if applicant.getFirstName() == name:
-                 return applicant
+                 print(applicant._firstName)
     def printApplicants(self):
         applicantIndex: int = 0
         for applicant in self._applicantList:
@@ -121,6 +121,6 @@ def play():
         
         #delete applicant
         if opt == 3:
-            pass
+            database.findApplicant(input("What's the name?"))
     
 play()   
