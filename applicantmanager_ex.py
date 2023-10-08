@@ -85,7 +85,12 @@ class Database:
     def findApplicant(self, name: str):
         for applicant in self._applicantList:
              if applicant.getFirstName() == name:
-                 print(applicant._firstName)
+                 print(applicant._firstName + ' ' + applicant._secondName + ' ' + applicant._gender + ' ' + applicant._city + ' ' + applicant._age + ' ' + applicant._address + ' ' + applicant._birthday + ' ' + applicant._certificate)
+
+    def deleteApplicant(self, name: str):
+        pass          
+    def changeApplicantData():
+        pass
     def printApplicants(self):
         applicantIndex: int = 0
         for applicant in self._applicantList:
