@@ -12,7 +12,7 @@ import random
 A class used to represent the Applicants
 '''
 class Applicant:
-    _id:int = None
+    _id:int = 0
     _firstName:str = None
     _secondName:str = None
     _gender:str = None
@@ -24,7 +24,7 @@ class Applicant:
     _expectedSalary:float = None
 
     def __init__(self):
-        self._id = random.randint(0, 10000)
+        self._id += 1
         self._firstName = input("First Name:")
         self._secondName = input("Second Name:")
         self._gender = input("Gender:")
@@ -85,7 +85,7 @@ class Database:
     def findApplicant(self, name: str):
         for applicant in self._applicantList:
              if applicant.getFirstName() == name:
-                 print(applicant._firstName + ' ' + applicant._secondName + ' ' + applicant._gender + ' ' + applicant._city + ' ' + applicant._age + ' ' + applicant._address + ' ' + applicant._birthday + ' ' + applicant._certificate)
+                 print(str(applicant._id) + ' ' + applicant._firstName + ' ' + applicant._secondName + ' ' + applicant._gender + ' ' + applicant._city + ' ' + applicant._age + ' ' + applicant._address + ' ' + applicant._birthday + ' ' + applicant._certificate)
 
     def deleteApplicant(self, name: str):
         pass          
@@ -94,7 +94,7 @@ class Database:
     def printApplicants(self):
         applicantIndex: int = 0
         for applicant in self._applicantList:
-            print(str(applicantIndex) + ' ' + applicant._firstName + ' ' + applicant._secondName)
+            print(str(applicant._id) + ' ' + applicant._firstName + ' ' + applicant._secondName)
             applicantIndex += 1
     '''
     Getter and setter methods section
