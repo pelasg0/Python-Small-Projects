@@ -24,7 +24,7 @@ class Applicant:
     _expectedSalary:float = None
 
     def __init__(self):
-        self._id += 1
+        self._id += 1 #for this we can use the id() python function 
         self._firstName = input("First Name:")
         self._secondName = input("Second Name:")
         self._gender = input("Gender:")
