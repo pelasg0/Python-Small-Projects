@@ -12,7 +12,7 @@ import random
 A class used to represent the Applicants
 '''
 class Applicant:
-    _id:int = 0
+    _id:int = None
     _firstName:str = None
     _secondName:str = None
     _gender:str = None
@@ -24,7 +24,7 @@ class Applicant:
     _expectedSalary:float = None
 
     def __init__(self):
-        self._id += 1 #for this we can use the id() python function 
+        self._id = id(self._id)
         self._firstName = input("First Name:")
         self._secondName = input("Second Name:")
         self._gender = input("Gender:")
