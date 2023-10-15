@@ -24,7 +24,6 @@ class Applicant:
     _expectedSalary:float = None
 
     def __init__(self):
-        self._id = id(self._id)
         self._firstName = input("First Name:")
         self._secondName = input("Second Name:")
         self._gender = input("Gender:")
@@ -94,8 +93,10 @@ class Database:
     def printApplicants(self):
         applicantIndex: int = 0
         for applicant in self._applicantList:
-            print(str(applicant._id) + ' ' + applicant._firstName + ' ' + applicant._secondName)
             applicantIndex += 1
+            applicant._id = applicantIndex
+            print(str(applicant._id) + ' ' + applicant._firstName + ' ' + applicant._secondName)
+            
     '''
     Getter and setter methods section
     '''
