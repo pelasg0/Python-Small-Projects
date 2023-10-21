@@ -21,7 +21,7 @@ while True:
     # Get user input
     move = input("Move (W/A/S/D, Q to quit): ").upper()
 
-    # Update player position
+    # Update player position 
     if move == "W" and player_y > 0:
         player_y -= 1
     elif move == "A" and player_x > 0:

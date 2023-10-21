@@ -84,7 +84,7 @@ class Database:
     def findApplicant(self, name: str):
         for applicant in self._applicantList:
              if applicant.getFirstName() == name:
-                 print(str(applicant._id) + ' ' + applicant._firstName + ' ' + applicant._secondName + ' ' + applicant._gender + ' ' + applicant._city + ' ' + applicant._age + ' ' + applicant._address + ' ' + applicant._birthday + ' ' + applicant._certificate)
+                 print(str(applicant._id) + ' ' + str(applicant._firstName) + ' ' + str(applicant._secondName) + ' ' + str(applicant._gender) + ' ' + str(applicant._city) + ' ' + str(applicant._age) + ' ' + str(applicant._address) + ' ' + str(applicant._birthday) + ' ' + str(applicant._certificate))
 
     def deleteApplicant(self, name: str):
         pass          
@@ -127,6 +127,6 @@ def play():
         
         #delete applicant
         if opt == 3:
-            database.findApplicant(input("What's the name?"))
+            database.findApplicant(str(input("What's the name?")))
     
 play()   
