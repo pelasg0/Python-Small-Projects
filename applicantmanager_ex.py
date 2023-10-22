@@ -36,6 +36,8 @@ class Applicant:
     """
     Getter and setter methods section
     """
+    def getId(self):
+        return self._id
     def getFirstName(self):
         return self._firstName
     def getSecondName(self):
@@ -81,9 +83,9 @@ class Database:
             applicantList = []
         self._applicantList = applicantList
 
-    def findApplicant(self, name: str):
+    def findApplicant(self, id: int):
         for applicant in self._applicantList:
-             if applicant.getFirstName() == name:
+             if applicant.getId() == id:
                  print(str(applicant._id) + ' ' + str(applicant._firstName) + ' ' + str(applicant._secondName) + ' ' + str(applicant._gender) + ' ' + str(applicant._city) + ' ' + str(applicant._age) + ' ' + str(applicant._address) + ' ' + str(applicant._birthday) + ' ' + str(applicant._certificate))
 
     def deleteApplicant(self, name: str):
@@ -110,7 +112,7 @@ def play():
 
     while applicant == None:
         def mainMenu():
-            opt = int(input("What do you want: 1. Add Applicant 2. Print all Applicants: "))
+            opt = int(input("What do you want: 1. Add Applicant 2. Print all Applicants 3. Delete Applicant 4. Get more Information about a Particular Applicant"))
             return opt
 
         opt = mainMenu()
@@ -127,6 +129,12 @@ def play():
         
         #delete applicant
         if opt == 3:
-            database.findApplicant(str(input("What's the name?")))
+            database.printApplicants()
+            print("Which applicant do you want to delete?")
+        
+        if opt == 4: 
+            database.findApplicant(str(input("What's the id?")))
+            print("Which Applicant do you need?")
+
     
 play()   
