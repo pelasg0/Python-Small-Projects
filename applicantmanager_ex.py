@@ -85,11 +85,15 @@ class Database:
 
     def findApplicant(self, id: int):
         for applicant in self._applicantList:
-             if applicant.getId() == id:
-                 print(str(applicant._id) + ' ' + str(applicant._firstName) + ' ' + str(applicant._secondName) + ' ' + str(applicant._gender) + ' ' + str(applicant._city) + ' ' + str(applicant._age) + ' ' + str(applicant._address) + ' ' + str(applicant._birthday) + ' ' + str(applicant._certificate))
+            if applicant.getId() == id:
+                print(str(applicant._id) + ' ' + str(applicant._firstName) + ' ' + str(applicant._secondName) + ' ' + str(applicant._gender) + ' ' + str(applicant._city) + ' ' + str(applicant._age) + ' ' + str(applicant._address) + ' ' + str(applicant._birthday) + ' ' + str(applicant._certificate))
+            else:
+                print ("There's not such a applicant")
 
     def deleteApplicant(self, name: str):
-        pass          
+        for applicant in self._applicantList:
+            if applicant.getId() == id:
+                pass       
     def changeApplicantData():
         pass
     def printApplicants(self):
@@ -133,8 +137,8 @@ def play():
             print("Which applicant do you want to delete?")
         
         if opt == 4: 
+            database.printApplicants()
             database.findApplicant(str(input("What's the id?")))
-            print("Which Applicant do you need?")
 
     
 play()   
