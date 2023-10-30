@@ -13,7 +13,7 @@ import itertools
 A class used to represent the Applicants
 '''
 class Applicant:
-    
+    #object for the auto incrementing of the id we have in the class
     idObj:object = itertools.count()
 
     _id:int = None
@@ -90,8 +90,8 @@ class Database:
 
     def findApplicant(self, id: int):
         for applicant in self._applicantList:
-            if applicant.getId() == id:
-                print(str(applicant._firstName) + ' ' + str(applicant._secondName) + ' ' + str(applicant._gender) + ' ' + str(applicant._city) + ' ' + str(applicant._age) + ' ' + str(applicant._address) + ' ' + str(applicant._birthday) + ' ' + str(applicant._certificate))
+            if id == applicant.getId():
+                print(str(applicant.getFirstName()) + ' ' + str(applicant.getSecondName()) + ' ' + str(applicant.getGender()) + ' ' + str(applicant.getCity()) + ' ' + str(applicant.getAge()) + ' ' + str(applicant.getAdress()) + ' ' + str(applicant.getBirthday()) + ' ' + str(applicant.getCertificate()))
             else:
                 print ("There's not such a applicant")
 
@@ -106,7 +106,7 @@ class Database:
         for applicant in self._applicantList:
             #applicantIndex += 1
             #applicant._id = applicantIndex
-            print(str(applicant._id) + ' ' + applicant._firstName + ' ' + applicant._secondName)
+            print(str(applicant.getId()) + ' ' + applicant.getFirstName() + ' ' + applicant.getSecondName())
             
     '''
     Getter and setter methods section
@@ -144,6 +144,7 @@ def play():
         if opt == 4: 
             database.printApplicants()
             database.findApplicant(input("What's the id?"))
+
 
     
 play()   
