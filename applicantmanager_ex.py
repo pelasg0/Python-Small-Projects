@@ -7,11 +7,15 @@ Application where you can save and sort all the applicants
 Imports
 """
 import random
+import itertools
 
 '''
 A class used to represent the Applicants
 '''
 class Applicant:
+    
+    idObj:object = itertools.count()
+
     _id:int = None
     _firstName:str = None
     _secondName:str = None
@@ -24,6 +28,7 @@ class Applicant:
     _expectedSalary:float = None
 
     def __init__(self):
+        self._id = next(Applicant.idObj)
         self._firstName = input("First Name:")
         self._secondName = input("Second Name:")
         self._gender = input("Gender:")
@@ -86,7 +91,7 @@ class Database:
     def findApplicant(self, id: int):
         for applicant in self._applicantList:
             if applicant.getId() == id:
-                print(str(applicant._id) + ' ' + str(applicant._firstName) + ' ' + str(applicant._secondName) + ' ' + str(applicant._gender) + ' ' + str(applicant._city) + ' ' + str(applicant._age) + ' ' + str(applicant._address) + ' ' + str(applicant._birthday) + ' ' + str(applicant._certificate))
+                print(str(applicant._firstName) + ' ' + str(applicant._secondName) + ' ' + str(applicant._gender) + ' ' + str(applicant._city) + ' ' + str(applicant._age) + ' ' + str(applicant._address) + ' ' + str(applicant._birthday) + ' ' + str(applicant._certificate))
             else:
                 print ("There's not such a applicant")
 
@@ -97,10 +102,10 @@ class Database:
     def changeApplicantData():
         pass
     def printApplicants(self):
-        applicantIndex: int = 0
+        #applicantIndex: int = 0
         for applicant in self._applicantList:
-            applicantIndex += 1
-            applicant._id = applicantIndex
+            #applicantIndex += 1
+            #applicant._id = applicantIndex
             print(str(applicant._id) + ' ' + applicant._firstName + ' ' + applicant._secondName)
             
     '''
@@ -138,7 +143,7 @@ def play():
         
         if opt == 4: 
             database.printApplicants()
-            database.findApplicant(str(input("What's the id?")))
+            database.findApplicant(input("What's the id?"))
 
     
 play()   
