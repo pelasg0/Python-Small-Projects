@@ -117,6 +117,8 @@ class Database:
 def play():  
     database = Database()
     applicantList = database._applicantList
+    #applicantDummy1 = Applicant("Tom", "Tomson", "Male", "Tomcity", 22, "Tomsonstr.", [12, 12, 2000], True)
+    #applicantDummy2 = Applicant("Maria", "Marinson", "Female", "Mariacity", 24, "Mariestr.", [12, 12, 2000], False)
     applicant = None
 
     while applicant == None:
