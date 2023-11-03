@@ -106,7 +106,7 @@ class Database:
         for applicant in self._applicantList:
             #applicantIndex += 1
             #applicant._id = applicantIndex
-            print(str(applicant.getId()) + ' ' + applicant.getFirstName() + ' ' + applicant.getSecondName())
+            print(F"/ID: {str(applicant.getId())} /First Name: {applicant.getFirstName()} /Second Name: {applicant.getSecondName()}")
             
     '''
     Getter and setter methods section
