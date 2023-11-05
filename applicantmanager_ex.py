@@ -91,7 +91,7 @@ class Database:
     def findApplicant(self, applicantId: int):
         for applicant in self._applicantList:
             if int(applicantId) == int(applicant.getId()):
-                print(str(applicant.getFirstName()) + ' ' + str(applicant.getSecondName()) + ' ' + str(applicant.getGender()) + ' ' + str(applicant.getCity()) + ' ' + str(applicant.getAge()) + ' ' + str(applicant.getAddress()) + ' ' + str(applicant.getBirthday()) + ' ' + str(applicant.getCertificate()))
+                print(str(F"/First Name: applicant.getFirstName()) /Second Name:str(applicant.getSecondName()) /Gender:str(applicant.getGender()) /City:str(applicant.getCity()) /Age:str(applicant.getAge()) /Address:str(applicant.getAddress()) /Birthday:str(applicant.getBirthday()) /Certificate:str(applicant.getCertificate())")
             else: 
                 print(str(applicantId) + ' ' + str(applicant.getId()))
                  
